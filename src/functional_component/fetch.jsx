@@ -1,12 +1,16 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 function Getproducts(){
     const[products,setproducts]=useState([])
     const get_recipes=async()=>{
-        const response = await fetch('http://127.0.0.1:8000/recipes/')
+        const response = await fetch('https://food-restarent-backend.onrender.com/recipes/')
         const products = await response.json()
         setproducts(products.recipes)
     }
+    // useEffect(function(){
+    //     console.log("hello")
+    //     get_recipes()
+    // },[])
     return <div>
         <div><button onClick={get_recipes}>Get Products</button></div>
         {
